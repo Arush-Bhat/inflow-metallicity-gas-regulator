@@ -46,10 +46,10 @@ Two related models are used.
 
 The baseline model follows:
 
-- gas mass \(M_g\)
-- stellar mass \(M_\star\)
-- gas metal mass \(M_Z\)
-- gas metallicity \(Z_g=M_Z/M_g\)
+- gas mass $M_g$
+- stellar mass $M_\star$
+- gas metal mass $M_Z$
+- gas metallicity $Z_g=M_Z/M_g$
 
 The baseline star-formation law is
 
@@ -149,16 +149,16 @@ A complete mathematical description is given in `MODEL_SPECIFICATION.md`.
 
 The final model uses:
 
-- \(Z_\odot=0.0134\)
-- \(M_{g,0}=5\times10^9\,M_\odot\)
-- \(M_{\star,0}=5\times10^{10}\,M_\odot\)
-- \(Z_{g,0}=0.5Z_\odot\)
-- \(R=0.4\)
-- \(\eta=0.5\)
-- \(y=0.016\)
-- \(\tau_{\rm dep}=2.35\) Gyr for the baseline model
-- \(R_{\rm gas}=10\) kpc for the KMT model
-- clumping factor \(c=5\)
+- $Z_\odot=0.0134$
+- $M_{g,0}=5\times10^9\,M_\odot$
+- $M_{\star,0}=5\times10^{10}\,M_\odot$
+- $Z_{g,0}=0.5Z_\odot$
+- $R=0.4$
+- $\eta=0.5$
+- $y=0.016$
+- $\tau_{\rm dep}=2.35$ Gyr for the baseline model
+- $R_{\rm gas}=10$ kpc for the KMT model
+- clumping factor $c=5$
 
 The inflow rate is defined from the baseline equilibrium condition,
 
@@ -219,7 +219,7 @@ The different KMT runs still approach nearly the same late-time star-formation r
 
 The gas reservoir instead adjusts. More metal-rich runs require less total gas to maintain approximately the same equilibrium SFR.
 
-The exact size of the transient response depends on model assumptions such as gas radius and clumping factor. The \(14.4\%\) result should therefore be interpreted as a result of this specific model setup, not as a universal prediction for real galaxies.
+The exact size of the transient response depends on model assumptions such as gas radius and clumping factor. The $14.4\%$ result should therefore be interpreted as a result of this specific model setup, not as a universal prediction for real galaxies.
 
 ---
 
