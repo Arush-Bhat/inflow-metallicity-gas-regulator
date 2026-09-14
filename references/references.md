@@ -23,7 +23,7 @@ Used in this project for:
 - metal-mass conservation;
 - the instantaneous-recycling treatment;
 - the definition of the stellar yield;
-- the adopted return fraction \(R=0.4\);
+- the adopted return fraction $R=0.4$;
 - comparison with regulator depletion times.
 
 ---
@@ -70,25 +70,25 @@ This is the main reference for the KMT implementation used in the project.
 
 It provides the adopted approximations for:
 
-- the molecular fraction \(f_{\rm H_2}\);
-- the metallicity variable \(Z'=Z_g/Z_\odot\);
+- the molecular fraction $f_{\rm H_2}$;
+- the metallicity variable $Z'=Z_g/Z_\odot$;
 - the unresolved clumping-factor treatment;
 - the molecular-gas-dependent star-formation law;
 - the surface-density dependence of the star-formation prescription.
 
 The project adopts a clumping factor
 
-\[
+$$
 c=5,
-\]
+$$
 
 motivated by the unresolved-galaxy treatment discussed in this work.
 
 The KMT approximation is also treated cautiously at very low metallicity, approximately below
 
-\[
+$$
 Z' \sim 0.05.
-\]
+$$
 
 ---
 
@@ -104,9 +104,9 @@ Asplund, M., Grevesse, N., Sauval, A. J., & Scott, P. (2009).
 
 Used for the adopted solar metal mass fraction
 
-\[
+$$
 Z_\odot = 0.0134.
-\]
+$$
 
 ---
 
@@ -124,9 +124,9 @@ Usero, A., & Wiesemeyer, H. W. (2011).
 
 Used as the observational motivation for the adopted depletion time
 
-\[
+$$
 \tau_{\rm dep}=2.35\ {\rm Gyr}.
-\]
+$$
 
 In the baseline one-zone model, this molecular-gas depletion time is applied to the total gas reservoir as a modelling assumption rather than as a direct observational measurement of the modeled system.
 
@@ -140,8 +140,8 @@ In the baseline one-zone model, this molecular-gas depletion time is applied to 
 | Krumholz et al. (2008) | Physical basis of the atomic-to-molecular transition |
 | Krumholz et al. (2009), ApJ 693 | Molecular fraction and metallicity dependence |
 | Krumholz et al. (2009), ApJ 699 | KMT molecular fraction and star-formation law |
-| Asplund et al. (2009) | Solar metallicity \(Z_\odot=0.0134\) |
-| Bigiel et al. (2011) | Motivation for \(\tau_{\rm dep}=2.35\) Gyr |
+| Asplund et al. (2009) | Solar metallicity $Z_\odot=0.0134$ |
+| Bigiel et al. (2011) | Motivation for $\tau_{\rm dep}=2.35$ Gyr |
 
 ---
 
