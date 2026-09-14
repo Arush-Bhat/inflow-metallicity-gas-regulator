@@ -1,0 +1,7 @@
+# Python version used for the final project: 3.14.6
+
+numpy==2.5.2
+scipy==1.18.0
+pandas==3.0.5
+matplotlib==3.11.1
+jupyter==1.1.1
