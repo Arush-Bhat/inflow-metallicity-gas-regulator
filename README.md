@@ -8,9 +8,7 @@ A simple one-zone gas-regulator model is used. The project first constructs a me
 
 The main controlled variable is the inflow metallicity,
 
-$$
-Z_{\rm in}.
-$$
+$$Z_{\rm in}$$
 
 The purpose of the project is not to reproduce the detailed evolution of a specific observed galaxy. Instead, it tests whether changing inflow metallicity can produce a measurable dynamical response under simple and controlled assumptions.
 
@@ -63,25 +61,11 @@ The KMT model keeps the same mass and metal conservation framework but replaces 
 
 The main causal pathway is
 
-$$
-Z_{\rm in}
-\rightarrow
-Z_g
-\rightarrow
-Z'
-\rightarrow
-f_{\rm H_2}
-\rightarrow
-\dot M_{\star,\mathrm{SF}},
-$$
+$$Z_{\rm in} \rightarrow Z_g \rightarrow Z' \rightarrow f_{\rm H_2} \rightarrow \dot M_{\star,\mathrm{SF}}, $$
 
 where
 
-$$
-Z'
-=
-\frac{Z_g}{Z_\odot}.
-$$
+$$Z' = \frac{Z_g}{Z_\odot}$$
 
 ---
 
@@ -89,53 +73,23 @@ $$
 
 The gas mass evolves as
 
-$$
-\frac{dM_g}{dt}
-=
-\dot M_{\rm in}
--
-(1-R+\eta)\dot M_{\star,\mathrm{SF}}.
-$$
+$$\frac{dM_g}{dt} = \dot M_{\rm in} - (1-R+\eta)\dot M_{\star,\mathrm{SF}}$$
 
 The long-lived stellar mass evolves as
 
-$$
-\frac{dM_\star}{dt}
-=
-(1-R)\dot M_{\star,\mathrm{SF}}.
-$$
+$$\frac{dM_\star}{dt} = (1-R)\dot M_{\star,\mathrm{SF}}$$
 
 The gas metal mass evolves as
 
-$$
-\frac{dM_Z}{dt}
-=
-Z_{\rm in}\dot M_{\rm in}
--
-Z_g(1-R+\eta)\dot M_{\star,\mathrm{SF}}
-+
-y(1-R)\dot M_{\star,\mathrm{SF}}.
-$$
+$$\frac{dM_Z}{dt} = Z_{\rm in}\dot M_{\rm in} - Z_g(1-R+\eta)\dot M_{\star,\mathrm{SF}} + y(1-R)\dot M_{\star,\mathrm{SF}}$$
 
 The analytical equilibrium star-formation rate is
 
-$$
-\dot M_{\star,\mathrm{SF,eq}}
-=
-\frac{\dot M_{\rm in}}
-{1-R+\eta}.
-$$
+$$\dot M_{\star,\mathrm{SF,eq}} = \frac{\dot M_{\rm in}} {1-R+\eta}$$
 
 The analytical equilibrium metallicity is
 
-$$
-Z_{\rm eq}
-=
-Z_{\rm in}
-+
-\frac{y(1-R)}
-{1-R+\eta}.
-$$
+$$Z_{\rm eq} = Z_{\rm in} + \frac{y(1-R)}{1-R+\eta}$$
 
 A complete mathematical description is given in `MODEL_SPECIFICATION.md`.
 
@@ -158,20 +112,11 @@ The final model uses:
 
 The inflow rate is defined from the baseline equilibrium condition,
 
-$$
-\dot M_{\rm in}
-=
-(1-R+\eta)
-\frac{M_{g,0}}{\tau_{\rm dep}},
-$$
+$$\dot M_{\rm in} = (1-R+\eta) \frac{M_{g,0}}{\tau_{\rm dep}}$$
 
 giving approximately
 
-$$
-\dot M_{\rm in}
-=
-2.34\,M_\odot\,{\rm yr}^{-1}.
-$$
+$$ \dot M_{\rm in} = 2.34\,M_\odot\,{\rm yr}^{-1}$$
 
 The full origin, status and justification of each value are listed in `PARAMETER_PROVENANCE.md`.
 
@@ -181,11 +126,7 @@ The full origin, status and justification of each value are listed in `PARAMETER
 
 The final experiment varies
 
-$$
-\frac{Z_{\rm in}}{Z_\odot}
-=
-[0,\ 0.05,\ 0.10,\ 0.30,\ 0.50,\ 1.00].
-$$
+$$ \frac{Z_{\rm in}}{Z_\odot} = [0,\ 0.05,\ 0.10,\ 0.30,\ 0.50,\ 1.00]$$
 
 All other parameters and initial conditions are kept fixed.
 
@@ -201,15 +142,11 @@ Higher inflow metallicity increases the evolving ISM metallicity and molecular f
 
 For the adopted parameter set, the largest point-by-point SFR difference relative to the pristine-inflow KMT run is approximately
 
-$$
-14.4\%.
-$$
+$$14.4\%.$$
 
 This occurs for
 
-$$
-Z_{\rm in}=Z_\odot.
-$$
+$$Z_{\rm in}=Z_\odot.$$
 
 The different KMT runs still approach nearly the same late-time star-formation rate because the equilibrium mass flow remains constrained by the fixed inflow rate, return fraction and mass-loading factor.
 
