@@ -53,11 +53,7 @@ The baseline model follows:
 
 The baseline star-formation law is
 
-$$
-\dot M_{\star,\mathrm{SF}}
-=
-\frac{M_g}{\tau_{\rm dep}}.
-$$
+$$\dot M_{\star,\mathrm{SF}}=\frac{M_g}{\tau_{\rm dep}}$$
 
 Metallicity does not enter this star-formation law. The baseline model therefore acts as a control experiment.
 
