@@ -1,0 +1,1285 @@
+\documentclass[10pt,a4paper]{article}
+
+% ------------------------------------------------------------
+% Packages
+% ------------------------------------------------------------
+
+\usepackage[a4paper,margin=0.75in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{pdflscape}
+
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{hyperref}
+\usepackage{titling}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+}
+
+\setlength{\columnsep}{0.25in}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.15em}
+
+% ------------------------------------------------------------
+% Title spacing
+% ------------------------------------------------------------
+
+\setlength{\droptitle}{-0.6in}
+
+\pretitle{\begin{center}\Large\bfseries}
+\posttitle{\par\end{center}\vspace{-0.4em}}
+
+\preauthor{\begin{center}\small}
+\postauthor{\par\end{center}\vspace{-0.8em}}
+
+\predate{}
+\postdate{}
+
+% ------------------------------------------------------------
+% Useful commands
+% ------------------------------------------------------------
+
+\newcommand{\Msun}{M_\odot}
+\newcommand{\SFR}{\dot{M}_{\star,\mathrm{SF}}}
+\newcommand{\SFReq}{\dot{M}_{\star,\mathrm{SF,eq}}}
+\newcommand{\Mgin}{\dot{M}_{\mathrm{in}}}
+\newcommand{\Mgout}{\dot{M}_{\mathrm{out}}}
+
+% ------------------------------------------------------------
+% Title
+% ------------------------------------------------------------
+
+\title{
+Testing the Effect of Inflow Metallicity on Molecular Gas and Star Formation in a One-Zone Gas-Regulator Model
+}
+
+\author{
+Arush Bhat\\
+Roll No.\ 244611\\
+TYBSc Physics\\
+Fergusson College (Autonomous)
+}
+
+\date{}
+
+% ------------------------------------------------------------
+% Document
+% ------------------------------------------------------------
+
+\begin{document}
+
+\twocolumn[
+\begin{@twocolumnfalse}
+
+\maketitle
+
+\begin{abstract}
+
+This project studies whether the metallicity of gas entering a galaxy can
+affect later molecular-gas formation and star formation. A one-zone
+gas-regulator model was first constructed as a control model. In this version,
+the star-formation rate depends only on the total gas mass, so changing the
+inflow metallicity changes the chemical evolution but does not directly change
+the gas or star-formation history. A second model was then made using the
+metallicity-dependent molecular-gas and star-formation prescription of
+Krumholz, McKee and Tumlinson.
+
+The models were tested over an inflow-metallicity range from zero to solar
+metallicity while the other model parameters were kept fixed. In the KMT model, higher inflow metallicity increased the gas metallicity and molecular fraction and produced a transient change in star formation. For the adopted fiducial parameter set, the largest point-by-point difference in star-formation rate relative to the zero-metallicity inflow case was about \(14.4\%\). However, all runs approached
+nearly the same equilibrium star-formation rate because the inflow rate,
+return fraction and mass-loading factor were fixed. The main effect at late
+times was therefore a change in the gas mass required to maintain the
+regulator equilibrium.
+
+\end{abstract}
+
+\vspace{0.5em}
+
+\end{@twocolumnfalse}
+]
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+Galaxies continuously gain, consume and lose gas. Gas enters a galaxy, some of it forms stars, part of the stellar material is returned to the interstellar medium, and feedback can remove gas through galactic outflows. A simple way to study these processes is the gas-regulator or ``bathtub'' model, where the galaxy is treated as a gas reservoir whose mass changes according to the balance between inflow, star formation and outflow \cite{lilly2013}.
+
+Metallicity is normally useful as a tracer of this gas cycle because stars produce heavy elements while inflows and outflows redistribute them. However, metallicity can also affect the physical state of the gas. In particular, molecular hydrogen is affected by dust shielding and metallicity. The Krumholz--McKee--Tumlinson framework predicts that the molecular fraction depends mainly on gas surface density and also on metallicity \cite{kmt2008,kmt2009ii}. Molecular gas is closely connected to star formation, giving a possible route through which metallicity may become dynamically important \cite{kmt2009sf}.
+
+The purpose of this project is not to construct a detailed model of a real galaxy. Instead, the aim is to isolate inflow metallicity as a controlled variable and test whether it can produce a measurable change in a deliberately simple model.
+
+% ============================================================
+\section{Research Question and Hypotheses}
+% ============================================================
+
+The main research question is:
+
+\begin{quote}
+Does changing the metallicity of gas inflowing into a one-zone galaxy model produce a measurable change in its molecular-gas content and star-formation history?
+\end{quote}
+
+A secondary question is whether the result changes when the model is changed from a metallicity-independent star-formation law to a metallicity-dependent molecular-gas prescription.
+
+The null hypothesis is that changing \(Z_{\rm in}\) will mainly change the chemical evolution of the galaxy and will not significantly affect gas consumption when the star-formation prescription is independent of metallicity.
+
+The alternative hypothesis is that once a metallicity-dependent molecular fraction is included, changing \(Z_{\rm in}\) will produce a measurable change in molecular gas and star formation.
+
+The experiment does not assume that increasing metallicity must increase the final star-formation rate. It only tests whether a physical connection exists strongly enough to change the evolution of the model.
+
+% ============================================================
+\section{Baseline Gas-Regulator Model}
+% ============================================================
+
+\subsection{State variables}
+
+The baseline model evolves three quantities:
+
+\begin{equation}
+\left[M_g,\ M_\star,\ M_Z\right],
+\end{equation}
+
+where \(M_g\) is the gas mass, \(M_\star\) is the mass locked in long-lived stars, and \(M_Z\) is the metal mass contained in the gas.
+
+The gas metallicity is
+
+\begin{equation}
+Z_g=\frac{M_Z}{M_g}.
+\end{equation}
+
+All masses are measured in \(M_\odot\), time is measured in Gyr, and metallicity is treated as a dimensionless mass fraction.
+
+\subsection{Star formation and outflow}
+
+The baseline star-formation prescription is
+
+\begin{equation}
+\SFR=\frac{M_g}{\tau_{\rm dep}},
+\label{eq:baseline_sfr}
+\end{equation}
+
+where \(\tau_{\rm dep}\) is the adopted depletion time.
+
+The outflow rate is
+
+\begin{equation}
+\Mgout=\eta\SFR,
+\end{equation}
+
+where \(\eta\) is the mass-loading factor.
+
+A fraction \(R\) of newly formed stellar mass is assumed to return immediately to the gas reservoir. Therefore the surviving stellar mass grows as
+
+\begin{equation}
+\frac{dM_\star}{dt}
+=
+(1-R)\SFR.
+\label{eq:stellar_growth}
+\end{equation}
+
+This follows the instantaneous-recycling treatment used in gas-regulator models \cite{lilly2013}.
+
+% ============================================================
+\subsection{Gas and metal conservation}
+% ============================================================
+
+The gas reservoir obeys
+
+\begin{equation}
+\frac{dM_g}{dt}
+=
+\Mgin
+-
+(1-R+\eta)\SFR.
+\label{eq:gas}
+\end{equation}
+
+The three terms represent inflow, gas permanently locked into stars, and gas removed by outflow.
+
+The outflow is assumed to be well mixed with the ISM, so
+
+\begin{equation}
+Z_{\rm out}=Z_g.
+\end{equation}
+
+The gas-phase metal mass then evolves as
+
+\begin{align}
+\frac{dM_Z}{dt}
+={}&
+Z_{\rm in}\Mgin
+-
+Z_g(1-R+\eta)\SFR
+\nonumber\\
+&+
+y(1-R)\SFR,
+\label{eq:metals}
+\end{align}
+
+where \(y\) is the mass of newly produced metals returned to the gas per unit mass locked into long-lived stars. This is the yield convention used by Lilly et al. \cite{lilly2013}.
+
+The terms in equation \ref{eq:metals} are respectively metal inflow, removal of existing metals through stellar locking and outflow, and newly produced metals.
+
+% ============================================================
+\section{Equilibrium Relations}
+% ============================================================
+
+The baseline model also has simple analytical equilibrium solutions. These are useful for checking the numerical code.
+
+Gas equilibrium requires
+
+\begin{equation}
+\frac{dM_g}{dt}=0.
+\end{equation}
+
+Using equation \ref{eq:gas},
+
+\begin{equation}
+\Mgin=(1-R+\eta)\SFReq,
+\end{equation}
+
+so
+
+\begin{equation}
+\boxed{
+\SFReq
+=
+\frac{\Mgin}{1-R+\eta}
+}.
+\label{eq:sfr_eq}
+\end{equation}
+
+Using the baseline star-formation law,
+
+\begin{equation}
+\boxed{
+M_{g,\rm eq}
+=
+\tau_{\rm dep}\SFReq
+}.
+\label{eq:mg_eq}
+\end{equation}
+
+The equilibrium metallicity can also be derived. Since
+
+\begin{equation}
+M_Z=Z_gM_g,
+\end{equation}
+
+differentiation gives
+
+\begin{equation}
+\frac{dM_Z}{dt}
+=
+M_g\frac{dZ_g}{dt}
++
+Z_g\frac{dM_g}{dt}.
+\end{equation}
+
+Combining this with equations \ref{eq:gas} and \ref{eq:metals} gives
+
+\begin{equation}
+M_g\frac{dZ_g}{dt}
+=
+(Z_{\rm in}-Z_g)\Mgin
++
+y(1-R)\SFR.
+\end{equation}
+
+At full gas and metal equilibrium,
+
+\begin{equation}
+\frac{dZ_g}{dt}=0
+\end{equation}
+
+and equation \ref{eq:sfr_eq} can be substituted. This gives
+
+\begin{equation}
+\boxed{
+Z_{\rm eq}
+=
+Z_{\rm in}
++
+\frac{y(1-R)}
+{1-R+\eta}
+}.
+\label{eq:z_eq}
+\end{equation}
+
+An important consequence is that \(Z_{\rm in}\) enters the equilibrium metallicity as an additive term.
+
+% ============================================================
+\section{Adopted Parameters}
+% ============================================================
+
+The final model uses the following common starting values:
+
+\begin{align}
+M_{g,0} &= 5\times10^9\,M_\odot,\\
+M_{\star,0} &= 5\times10^{10}\,M_\odot,\\
+Z_{g,0} &= 0.5Z_\odot.
+\end{align}
+
+These are representative initial conditions and are not treated as measurements of a particular galaxy.
+
+The solar metallicity is
+
+\begin{equation}
+Z_\odot=0.0134,
+\end{equation}
+
+using the present-day solar photospheric metal mass fraction from Asplund et al. \cite{asplund2009}.
+
+The return fraction is
+
+\begin{equation}
+R=0.4,
+\end{equation}
+
+following the value used in the Lilly et al. regulator model \cite{lilly2013}.
+
+The adopted yield is
+
+\begin{equation}
+y=0.016.
+\end{equation}
+
+Lilly et al. obtain a value close to this in their regulator fits, although they also note that the inferred yield depends on metallicity calibration \cite{lilly2013}. It is therefore used here as a reasonable model value rather than an exact universal yield.
+
+The mass-loading factor is
+
+\begin{equation}
+\eta=0.5.
+\end{equation}
+
+This is an adopted representative value and is not independently calibrated in this project.
+
+For the baseline model,
+
+\begin{equation}
+\tau_{\rm dep}=2.35~{\rm Gyr}.
+\end{equation}
+
+Bigiel et al. find a median molecular-gas depletion time of approximately \(2.35\) Gyr in nearby disk galaxies \cite{bigiel2011}. In the present baseline model the same value is applied to the total one-zone gas reservoir, so this use should be understood as a modelling assumption. Gas-regulator fits also give total-gas depletion times of order a few Gyr \cite{lilly2013}.
+
+The inflow rate is not chosen independently. It is defined as
+
+\begin{equation}
+\Mgin
+=
+(1-R+\eta)
+\frac{M_{g,0}}{\tau_{\rm dep}},
+\end{equation}
+
+which gives
+
+\begin{equation}
+\Mgin
+\simeq
+2.34~M_\odot\,{\rm yr}^{-1}.
+\end{equation}
+
+This choice places the initial baseline gas mass in gas-mass equilibrium.
+
+% ============================================================
+\section{KMT Molecular-Gas Extension}
+% ============================================================
+
+The baseline model is useful as a control, but metallicity does not appear in equation \ref{eq:baseline_sfr}. Therefore changing \(Z_{\rm in}\) cannot directly change the baseline SFR.
+
+To introduce a physical metallicity dependence, the molecular fraction and star-formation law of Krumholz, McKee and Tumlinson were added \cite{kmt2008,kmt2009ii,kmt2009sf}.
+
+\subsection{Effective surface density}
+
+Because the model has no spatial resolution, the total gas mass is converted into an effective mean surface density:
+
+\begin{equation}
+\Sigma_g
+=
+\frac{M_g}
+{\pi R_{\rm gas}^2}.
+\label{eq:sigma}
+\end{equation}
+
+A fixed effective radius
+
+\begin{equation}
+R_{\rm gas}=10~{\rm kpc}
+\end{equation}
+
+is adopted. This is a geometrical modelling assumption.
+
+The unresolved cloud-complex surface density is taken as
+
+\begin{equation}
+\Sigma_{\rm comp}=c\Sigma_g,
+\end{equation}
+
+where \(c\) is a clumping factor. KMT use approximately \(c=5\) when comparing their model with unresolved THINGS data \cite{kmt2009sf}. The same value is used here:
+
+\begin{equation}
+c=5.
+\end{equation}
+
+It is not treated as a measured property of this model galaxy.
+
+% ============================================================
+\subsection{Molecular fraction}
+% ============================================================
+
+The metallicity used in the KMT calculation is the current ISM metallicity relative to solar,
+
+\begin{equation}
+Z'=\frac{Z_g}{Z_\odot}.
+\end{equation}
+
+It is important that \(Z'\) is not the same quantity as \(Z_{\rm in}\). The inflow metallicity first changes the metal reservoir, which changes \(Z_g\), and this evolving \(Z_g\) is then passed to the KMT model.
+
+The molecular fraction is approximated by \cite{kmt2009sf}
+
+\begin{equation}
+f_{\rm H_2}
+=
+1-
+\left[
+1+
+\left(
+\frac{3}{4}
+\frac{s}{1+\delta}
+\right)^{-5}
+\right]^{-1/5},
+\label{eq:fh2}
+\end{equation}
+
+where
+
+\begin{equation}
+s=
+\frac{\ln(1+0.6\chi)}
+{0.04\,\Sigma_{\rm comp,0}Z'},
+\end{equation}
+
+\begin{equation}
+\chi
+=
+0.77
+\left(
+1+3.1Z'^{0.365}
+\right),
+\end{equation}
+
+and
+
+\begin{equation}
+\delta
+=
+0.0712
+\left(
+0.1s^{-1}+0.675
+\right)^{-2.8}.
+\end{equation}
+
+Here
+
+\begin{equation}
+\Sigma_{\rm comp,0}
+=
+\frac{\Sigma_{\rm comp}}
+{1\,M_\odot\,{\rm pc}^{-2}}.
+\end{equation}
+
+The model becomes less reliable below approximately \(Z'=0.05\) because of assumptions used in the atomic-gas treatment \cite{kmt2009sf}. The simulations used in this project begin at \(Z'=0.5\), so the evolving ISM metallicity remains above this low-metallicity limit.
+
+% ============================================================
+\subsection{KMT star-formation law}
+% ============================================================
+
+The KMT star-formation surface density is
+
+\begin{equation}
+\dot{\Sigma}_\star
+=
+f_{\rm H_2}
+\frac{\Sigma_g}{2.6~{\rm Gyr}}
+F(\Sigma_g),
+\label{eq:kmt_sfr}
+\end{equation}
+
+where
+
+\begin{equation}
+F(\Sigma_g)
+=
+\begin{cases}
+\left(
+\dfrac{\Sigma_g}
+{85\,M_\odot\,{\rm pc}^{-2}}
+\right)^{-0.33},
+&
+\Sigma_g<85\,M_\odot\,{\rm pc}^{-2},
+\\[8pt]
+\left(
+\dfrac{\Sigma_g}
+{85\,M_\odot\,{\rm pc}^{-2}}
+\right)^{0.33},
+&
+\Sigma_g>85\,M_\odot\,{\rm pc}^{-2}.
+\end{cases}
+\end{equation}
+
+The global star-formation rate is then
+
+\begin{equation}
+\SFR
+=
+\dot{\Sigma}_\star
+\pi R_{\rm gas}^2.
+\end{equation}
+
+The mass and metal conservation equations are otherwise unchanged.
+
+This produces the causal chain
+
+\begin{equation}
+Z_{\rm in}
+\rightarrow
+Z_g(t)
+\rightarrow
+Z'(t)
+\rightarrow
+f_{\rm H_2}(t)
+\rightarrow
+\SFR(t).
+\end{equation}
+
+% ============================================================
+\section{Numerical Method and Validation}
+% ============================================================
+
+The equations were integrated in Python using the \texttt{solve\_ivp} routine from SciPy. NumPy was used for numerical operations, Pandas for the final results table, and Matplotlib for plotting.
+
+The production runs cover
+
+\begin{equation}
+0\leq t\leq10~{\rm Gyr}
+\end{equation}
+
+with 1001 output times. The 10 Gyr interval is used to study the transient response and the approach toward equilibrium. It is not intended as a detailed reconstruction of the history of the Milky Way.
+
+Before the final experiment, both model versions were checked independently.
+
+For the baseline model, a validation run was started away from equilibrium. The numerical gas mass and metallicity approached the analytical equilibrium values shown in equations \ref{eq:mg_eq} and \ref{eq:z_eq}. The relative total mass-budget error was approximately
+
+\begin{equation}
+7.7\times10^{-8}.
+\end{equation}
+
+The baseline validation is shown in Figures \ref{fig:baseline_gas} and \ref{fig:baseline_z}.
+
+For the KMT regulator, the final numerical SFR differed from the analytical equilibrium SFR by approximately
+
+\begin{equation}
+9.9\times10^{-4}
+\end{equation}
+
+in relative terms, while the final metallicity differed from the analytical value by approximately
+
+\begin{equation}
+4.0\times10^{-3}.
+\end{equation}
+
+The relative total mass-budget error was approximately
+
+\begin{equation}
+1.7\times10^{-8}.
+\end{equation}
+
+The independent molecular-fraction and star-formation-law tests are shown in Figures \ref{fig:kmt_fh2} and \ref{fig:kmt_sflaw}.
+
+% ============================================================
+\section{Inflow-Metallicity Experiment}
+% ============================================================
+
+The controlled variable in the final experiment is the inflow metallicity.
+
+The tested values are
+
+\begin{equation}
+\frac{Z_{\rm in}}{Z_\odot}
+=
+[0,\ 0.05,\ 0.10,\ 0.30,\ 0.50,\ 1.00].
+\end{equation}
+
+All other model parameters and all initial conditions are kept fixed.
+
+Both the baseline and KMT models are run over the same grid. This makes the baseline model a control experiment.
+
+In the baseline case, \(Z_{\rm in}\) appears only in the metal equation. Therefore the gas-mass and SFR histories are identical for every inflow metallicity. Only the metallicity evolution changes.
+
+In the KMT model, the changing metallicity affects \(f_{\rm H_2}\), so the SFR and gas evolution can also change.
+
+% ============================================================
+\section{Results}
+% ============================================================
+
+\subsection{Metallicity}
+
+The final metallicities of both models closely follow the analytical relation
+
+\begin{equation}
+Z_{\rm eq}
+=
+Z_{\rm in}
++
+\frac{y(1-R)}
+{1-R+\eta}.
+\end{equation}
+
+The equilibrium metallicity therefore increases almost linearly with the inflow metallicity. Figure \ref{fig:metallicity_response} compares the numerical results with the analytical prediction.
+
+For example, the equilibrium metallicity increases from approximately
+
+\begin{equation}
+0.651Z_\odot
+\end{equation}
+
+for pristine inflow to
+
+\begin{equation}
+1.651Z_\odot
+\end{equation}
+
+for solar-metallicity inflow.
+
+% ============================================================
+\subsection{Molecular fraction}
+% ============================================================
+
+The KMT model gives a higher molecular fraction when the ISM becomes more metal rich. This behaviour is expected because metal and dust shielding allow molecular hydrogen to survive more easily \cite{kmt2009ii,kmt2009sf}.
+
+At the end of the runs, the molecular fraction increases from approximately
+
+\begin{equation}
+f_{\rm H_2}=0.660
+\end{equation}
+
+for \(Z_{\rm in}=0\) to
+
+\begin{equation}
+f_{\rm H_2}=0.789
+\end{equation}
+
+for \(Z_{\rm in}=Z_\odot\).
+
+The full time evolution is shown in Figure \ref{fig:fh2_response}.
+
+% ============================================================
+\subsection{Star formation}
+% ============================================================
+
+The star-formation histories show the clearest difference between the baseline and KMT models.
+
+The baseline SFR remains constant because its initial gas mass was chosen to satisfy the gas-equilibrium condition and metallicity does not enter the baseline star-formation law.
+
+The KMT model initially begins with a lower SFR than its eventual equilibrium value. Because the inflow rate was chosen to place the baseline model, rather than the KMT model, in initial gas-mass equilibrium, all KMT runs undergo a common relaxation from the adopted initial state. During this evolution, both the gas reservoir and the molecular fraction adjust. Higher \(Z_{\rm in}\) increases the molecular fraction more rapidly, producing a larger and earlier differential SFR response relative to the pristine-inflow KMT run.
+
+The strongest tested case is \(Z_{\rm in}=Z_\odot\). Its peak SFR is approximately
+
+\begin{equation}
+2.454~M_\odot\,{\rm yr}^{-1}.
+\end{equation}
+
+The largest point-by-point fractional difference relative to the pristine-inflow KMT run is approximately
+
+\begin{equation}
+\boxed{14.4\%},
+\end{equation}
+
+occurring near
+
+\begin{equation}
+t\simeq0.97~{\rm Gyr}.
+\end{equation}
+
+This quantity compares the two SFR histories at the same time. It is not the difference between their separate peak values.
+
+Figure \ref{fig:sfr_response} shows the complete star-formation response.
+
+% ============================================================
+\subsection{Gas reservoir}
+% ============================================================
+
+The late-time result is different from simply saying that higher metallicity gives a permanently higher SFR.
+
+All KMT runs approach approximately
+
+\begin{equation}
+\SFR
+\simeq
+2.13~M_\odot\,{\rm yr}^{-1}.
+\end{equation}
+
+This occurs because the equilibrium mass flow is still constrained by
+
+\begin{equation}
+\SFReq
+=
+\frac{\Mgin}{1-R+\eta}.
+\end{equation}
+
+The KMT prescription changes how much gas is required to produce this SFR, but it does not change the fixed inflow rate.
+
+As \(Z_{\rm in}\) increases, the equilibrium gas reservoir becomes smaller. The final KMT gas mass decreases from approximately
+
+\begin{equation}
+4.74\times10^9\,M_\odot
+\end{equation}
+
+for pristine inflow to
+
+\begin{equation}
+3.64\times10^9\,M_\odot
+\end{equation}
+
+for solar-metallicity inflow.
+
+This response is shown in Figure \ref{fig:gas_response}.
+
+An additional result is that the final molecular fraction rises while the absolute molecular mass falls slightly. The final molecular mass changes from about
+
+\begin{equation}
+3.13\times10^9\,M_\odot
+\end{equation}
+
+to
+
+\begin{equation}
+2.87\times10^9\,M_\odot.
+\end{equation}
+
+There is no contradiction here because
+
+\begin{equation}
+M_{\rm H_2}=f_{\rm H_2}M_g.
+\end{equation}
+
+The molecular fraction rises, but the total gas reservoir becomes smaller by a larger amount.
+
+% ============================================================
+\section{Interpretation}
+% ============================================================
+
+The main result is that inflow metallicity can affect star formation, but only when the model contains a physical pathway that allows metallicity to influence the gas.
+
+For the control model,
+
+\begin{equation}
+Z_{\rm in}
+\rightarrow
+Z_g,
+\end{equation}
+
+but \(Z_g\) does not affect the SFR.
+
+For the KMT model,
+
+\begin{equation}
+Z_{\rm in}
+\rightarrow
+Z_g
+\rightarrow
+f_{\rm H_2}
+\rightarrow
+\SFR.
+\end{equation}
+
+This produces a measurable transient difference.
+
+However, the model also shows that a transient difference does not automatically imply a different long-term equilibrium SFR. Since \(\Mgin\), \(R\), and \(\eta\) are fixed, the regulator pushes all runs toward the same equilibrium mass flow.
+
+The molecular prescription therefore changes the \emph{path} toward equilibrium and the gas mass required to maintain it more strongly than it changes the final SFR itself.
+
+% ============================================================
+\section{Sensitivity and Limitations}
+% ============================================================
+
+The result should be interpreted within the assumptions of the model.
+
+The exact size of the \(14.4\%\) transient response depends on the adopted gas radius and clumping factor. Limited sensitivity tests showed that changing these parameters changes the numerical amplitude of the response. The qualitative pathway remains present, but the \(14.4\%\) value should not be treated as a universal prediction for real galaxies.
+
+The main limitations are:
+
+\begin{itemize}[leftmargin=*]
+
+\item The galaxy is represented by a single well-mixed gas reservoir.
+
+\item The model contains no radial or vertical structure.
+
+\item The inflow rate is fixed externally.
+
+\item \(R\), \(y\), \(\eta\), \(R_{\rm gas}\), and \(c\) are constant during each run.
+
+\item The outflow metallicity is assumed to be equal to the ISM metallicity.
+
+\item Outflowing material is lost from the one-zone system and is not recycled.
+
+\item The circumgalactic medium is not followed as an evolving reservoir.
+
+\item The KMT prescription is applied using a global effective surface density rather than a resolved galaxy disk.
+
+\item The 10 Gyr integration interval is a numerical experiment and not a detailed reconstruction of a particular galaxy.
+
+\end{itemize}
+
+These limitations are intentional. The purpose of the model is to isolate one physical connection before adding more coupled processes.
+
+% ============================================================
+\section{Significance and Extension to an Evolving System}
+% ============================================================
+
+The most useful result of this project is not only that a metallicity response appears in the KMT model. The project also shows why the response becomes small at late times.
+
+In the present model,
+
+\begin{equation}
+\Mgin=\mathrm{constant}.
+\end{equation}
+
+Therefore the equilibrium SFR is constrained by equation \ref{eq:sfr_eq}. Metallicity can change the molecular fraction and the amount of gas needed to sustain star formation, but it cannot strongly change the long-term supply of gas.
+
+This gives a direct motivation for the next stage of the project.
+
+A more complete baryon-cycle model can treat the circumgalactic medium as another evolving reservoir. In that case the gas supplied to the ISM would no longer need to be fixed independently. The CGM metallicity could affect radiative cooling,
+
+\begin{equation}
+Z_{\rm CGM}
+\rightarrow
+\Lambda(T,Z)
+\rightarrow
+t_{\rm cool}
+\rightarrow
+\dot{M}_{\rm CGM\rightarrow ISM},
+\end{equation}
+
+while galactic outflows could return enriched material to the CGM.
+
+The inflow metallicity of the ISM could then become
+
+\begin{equation}
+Z_{\rm in,ISM}
+=
+Z_{\rm CGM}(t),
+\end{equation}
+
+instead of being an externally imposed constant.
+
+The important difference is that the system would then be dynamically coupled:
+
+\begin{equation}
+\mathrm{CGM}
+\rightarrow
+\mathrm{ISM}
+\rightarrow
+\mathrm{stars/outflow}
+\rightarrow
+\mathrm{CGM}.
+\end{equation}
+
+This would test whether the transient metallicity effect found here remains small, becomes stronger, or is erased once the gas supply itself is allowed to evolve.
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+A baseline one-zone gas-regulator model and a metallicity-dependent KMT extension were constructed and tested.
+
+The baseline model confirmed the null expectation: changing inflow metallicity changes the chemical evolution but does not change the gas mass or star-formation history when metallicity is absent from the star-formation law.
+
+After the KMT molecular prescription was introduced, inflow metallicity became dynamically connected to star formation through the evolving ISM metallicity and molecular fraction. Across the tested range, the strongest run produced a maximum point-by-point SFR difference of about \(14.4\%\) relative to pristine inflow.
+
+The effect was mainly transient. At late times the runs approached almost the same SFR because the regulator equilibrium remained controlled by the fixed inflow rate, return fraction and mass loading. The gas reservoir instead adjusted to the metallicity-dependent star-formation efficiency.
+
+The project therefore supports a limited but clear conclusion: metallicity can influence the evolution of a one-zone regulator when a physical metallicity-sensitive process is included, but a fixed external gas supply strongly limits its effect on the final equilibrium SFR.
+
+This result provides a useful starting point for a second model in which the surrounding gas reservoir, its metallicity, cooling, recycling and supply to the galaxy are allowed to evolve together.
+
+% ============================================================
+% FINAL FIGURES AND DATA
+% ============================================================
+
+\section*{Figures and Final Data}
+\captionsetup{font=small}
+
+% ------------------------------------------------------------
+% Figure 1
+% ------------------------------------------------------------
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\columnwidth]
+    {Graphs/baseline_gas_validation.png}
+    \caption{
+    Baseline gas-mass validation. The numerical solution approaches the analytical equilibrium gas mass when the model is started away from equilibrium.
+    }
+    \label{fig:baseline_gas}
+\end{figure}
+
+% ------------------------------------------------------------
+% Figure 2
+% ------------------------------------------------------------
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\columnwidth]
+    {Graphs/baseline_metallicity_validation.png}
+    \caption{
+    Baseline metallicity validation. The numerical gas metallicity approaches the analytical equilibrium metallicity.
+    }
+    \label{fig:baseline_z}
+\end{figure}
+
+% ------------------------------------------------------------
+% Figure 3
+% ------------------------------------------------------------
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\columnwidth]
+    {Graphs/kmt_molecular_fraction.png}
+    \caption{
+    KMT molecular fraction as a function of gas surface density for different values of \(Z'=Z_g/Z_\odot\). Higher metallicity allows a larger molecular fraction at fixed gas surface density.
+    }
+    \label{fig:kmt_fh2}
+\end{figure}
+
+% ------------------------------------------------------------
+% Figure 4
+% ------------------------------------------------------------
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\columnwidth]
+    {Graphs/kmt_star_formation_law.png}
+    \caption{
+    KMT star-formation surface density as a function of gas surface density for different metallicities.
+    }
+    \label{fig:kmt_sflaw}
+\end{figure}
+
+% ------------------------------------------------------------
+% Figure 5
+% ------------------------------------------------------------
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\columnwidth]
+    {Graphs/metallicity_response.png}
+    \caption{
+    Final gas metallicity as a function of inflow metallicity. Both the baseline and KMT models approach the analytical equilibrium relation.
+    }
+    \label{fig:metallicity_response}
+\end{figure}
+
+% ------------------------------------------------------------
+% Figure 6
+% ------------------------------------------------------------
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\columnwidth]
+    {Graphs/kmt_molecular_fraction_response.png}
+    \caption{
+    Evolution of the KMT molecular fraction for the tested inflow metallicities. Higher inflow metallicity produces a larger molecular fraction.
+    }
+    \label{fig:fh2_response}
+\end{figure}
+
+% ------------------------------------------------------------
+% Figure 7
+% ------------------------------------------------------------
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\columnwidth]
+    {Graphs/star\_formation\_response.png}
+    \caption{
+    Star-formation-rate response. The baseline remains unchanged with \(Z_{\rm in}\), while the KMT models show metallicity-dependent transient differences before converging toward nearly the same regulator equilibrium SFR.
+    }
+    \label{fig:sfr_response}
+\end{figure}
+
+% ------------------------------------------------------------
+% Figure 8
+% ------------------------------------------------------------
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\columnwidth]
+    {Graphs/gas\_mass\_response.png}
+    \caption{
+    Gas-mass response of the KMT model. More metal-rich runs require a smaller gas reservoir to approach approximately the same equilibrium SFR.
+    }
+    \label{fig:gas_response}
+\end{figure}
+
+% ============================================================
+% Final result table and references
+% ============================================================
+
+\clearpage
+\thispagestyle{plain}
+
+\noindent
+% ============================================================
+% LEFT SIDE -- ROTATED TABLE
+% ============================================================
+\begin{minipage}[t][0.92\textheight][c]{0.49\textwidth}
+\centering
+
+\rotatebox{270}{%
+\begin{minipage}{0.91\textheight}
+
+\centering
+
+\captionof{table}{
+Summary of the final inflow-metallicity experiment.
+Values are taken from
+\texttt{Tables/inflow\_metallicity\_summary.csv}.
+Masses are scaled in the headings to keep the table compact.
+}
+\label{tab:final_results}
+
+\vspace{0.15cm}
+
+\scriptsize
+
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{
+c
+c
+c
+c
+c
+c
+c
+c
+c
+c
+c
+c
+}
+
+\toprule
+
+\(\dfrac{Z_{\rm in}}{Z_\odot}\)
+&
+\(\dfrac{Z_{\rm eq}}{Z_\odot}\)
+&
+\(\dfrac{Z_{g,\rm base}}{Z_\odot}\)
+&
+\(\dfrac{Z_{g,\rm KMT}}{Z_\odot}\)
+&
+\(f_{\rm H_2}\)
+&
+\(\dfrac{M_{\rm H_2}}{10^9M_\odot}\)
+&
+\(\dfrac{M_g}{10^9M_\odot}\)
+&
+\(\dfrac{M_\star}{10^{10}M_\odot}\)
+&
+\(\mathrm{SFR}_{\rm peak}\)
+&
+\(\mathrm{SFR}_{\rm final}\)
+&
+Max. pointwise
+\(\Delta\mathrm{SFR}\)
+(\%)
+&
+\(t_{\rm max}\)
+(Gyr)
+\\
+
+\midrule
+
+0.00 &
+0.651 &
+0.650 &
+0.654 &
+0.660 &
+3.130 &
+4.744 &
+6.291 &
+2.191 &
+2.129 &
+0.00 &
+0.00
+\\
+
+0.05 &
+0.701 &
+0.699 &
+0.704 &
+0.671 &
+3.104 &
+4.625 &
+6.297 &
+2.213 &
+2.129 &
+1.28 &
+1.48
+\\
+
+0.10 &
+0.751 &
+0.749 &
+0.754 &
+0.682 &
+3.081 &
+4.520 &
+6.303 &
+2.234 &
+2.130 &
+2.45 &
+1.42
+\\
+
+0.30 &
+0.951 &
+0.947 &
+0.955 &
+0.716 &
+3.010 &
+4.202 &
+6.320 &
+2.305 &
+2.131 &
+6.26 &
+1.26
+\\
+
+0.50 &
+1.151 &
+1.145 &
+1.155 &
+0.743 &
+2.958 &
+3.983 &
+6.332 &
+2.359 &
+2.132 &
+9.19 &
+1.15
+\\
+
+1.00 &
+1.651 &
+1.641 &
+1.655 &
+0.789 &
+2.875 &
+3.645 &
+6.351 &
+2.454 &
+2.133 &
+14.41 &
+0.97
+\\
+
+\bottomrule
+
+\end{tabular}
+}
+
+\vspace{0.18cm}
+
+\begin{minipage}{0.96\linewidth}
+\footnotesize
+The peak and final SFR values are in
+\(M_\odot\,{\rm yr}^{-1}\).
+The maximum pointwise SFR difference is calculated relative to the
+\(Z_{\rm in}=0\) KMT run at the same simulation time.
+\end{minipage}
+
+\end{minipage}
+}
+
+\end{minipage}
+\hfill
+% ============================================================
+% RIGHT SIDE -- PORTRAIT REFERENCES
+% ============================================================
+\begin{minipage}[t][0.92\textheight][t]{0.47\textwidth}
+
+\vspace{0pt}
+
+\footnotesize
+
+\begin{thebibliography}{99}
+
+\setlength{\itemsep}{0.45em}
+\setlength{\parskip}{0pt}
+
+\bibitem{lilly2013}
+S. J. Lilly, C. M. Carollo, A. Pipino, A. Renzini, and Y. Peng,
+``Gas Regulation of Galaxies: The Evolution of the Cosmic Specific
+Star Formation Rate, the Metallicity--Mass--Star-formation Rate
+Relation, and the Stellar Content of Halos,''
+\textit{The Astrophysical Journal},
+vol. 772, p. 119, 2013.
+
+\bibitem{kmt2008}
+M. R. Krumholz, C. F. McKee, and J. Tumlinson,
+``The Atomic-to-Molecular Transition in Galaxies. I.
+An Analytic Approximation for Photodissociation Fronts in Finite Clouds,''
+\textit{The Astrophysical Journal},
+vol. 689, pp. 865--882, 2008.
+
+\bibitem{kmt2009ii}
+M. R. Krumholz, C. F. McKee, and J. Tumlinson,
+``The Atomic-to-Molecular Transition in Galaxies. II.
+H I and H$_2$ Column Densities,''
+\textit{The Astrophysical Journal},
+vol. 693, pp. 216--235, 2009.
+
+\bibitem{kmt2009sf}
+M. R. Krumholz, C. F. McKee, and J. Tumlinson,
+``The Star Formation Law in Atomic and Molecular Gas,''
+\textit{The Astrophysical Journal},
+vol. 699, pp. 850--856, 2009.
+
+\bibitem{asplund2009}
+M. Asplund, N. Grevesse, A. J. Sauval, and P. Scott,
+``The Chemical Composition of the Sun,''
+\textit{Annual Review of Astronomy and Astrophysics},
+vol. 47, pp. 481--522, 2009.
+
+\bibitem{bigiel2011}
+F. Bigiel, A. K. Leroy, F. Walter, E. Brinks,
+W. J. G. de Blok, C. Kramer, H.-W. Rix,
+A. Schruba, K.-F. Schuster, A. Usero, and H. W. Wiesemeyer,
+``A Constant Molecular Gas Depletion Time in Nearby Disk Galaxies,''
+\textit{The Astrophysical Journal Letters},
+vol. 730, p. L13, 2011.
+
+\end{thebibliography}
+
+\end{minipage}
+
+\end{document}
