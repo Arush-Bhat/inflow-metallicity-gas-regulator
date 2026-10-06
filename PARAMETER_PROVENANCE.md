@@ -66,27 +66,16 @@ The classifications are:
 1. The baseline mass and metal conservation equations are retained.
 2. The baseline star-formation prescription is replaced by the KMT molecular-gas-dependent prescription.
 3. The one-zone gas mass is converted to an effective mean surface density using
-   $$
-   \Sigma_g=\frac{M_g}{\pi R_{\rm gas}^2}.
-   $$
+   $$\Sigma_g=\frac{M_g}{\pi R_{\rm gas}^2}. $$
 4. The effective gas radius $R_{\rm gas}$ is fixed in time.
 5. Unresolved gas structure is represented by
-   $$
-   \Sigma_{\rm comp}=c\Sigma_g,
-   $$
+   $$\Sigma_{\rm comp}=c\Sigma_g, $$
    with constant clumping factor $c$.
 6. The metallicity supplied to the KMT prescription is the evolving ISM metallicity
-   $$
-   Z'=\frac{Z_g}{Z_\odot},
-   $$
+   $$Z'=\frac{Z_g}{Z_\odot},$$
    not the inflow metallicity directly.
 7. Inflow metallicity affects star formation through the causal pathway
-   $$
-   Z_{\rm in}
-   \rightarrow Z_g
-   \rightarrow f_{\rm H_2}
-   \rightarrow \dot M_{\star,\rm SF}.
-   $$
+   $$Z_{\rm in} \rightarrow Z_g \rightarrow f_{\rm H_2} \rightarrow \dot M_{\star,\rm SF}.$$
 8. The KMT approximation has reduced reliability below approximately
    $Z'\sim0.05$.## Parameter and assumption provenance
 
